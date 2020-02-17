@@ -1,0 +1,9 @@
+.meld-slot {
+    background-color: snow;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:dashed grey;
+    margin: 10px;
+    cursor: pointer;
+}
