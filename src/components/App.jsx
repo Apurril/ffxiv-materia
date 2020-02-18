@@ -63,19 +63,21 @@ const MateriaSelector = ({ slot }) => {
     console.log(e.target.value);
 
     setMateriaLabel(meldChanceCalc(index, slot, preMeldSlots));
-
     setSelectedMateria(e.target.value);
   };
   const optionGroups = [];
 
-  optionGroups.push(<option onClick={(e) => handleChange(e)} key="no-materia" value="-1">No Materia</option>);
+  optionGroups.push(<option key="no-materia" value="-1">No Materia</option>);
 
   Object.keys(materias).forEach((type) => {
     const options = [];
 
     materias[type].values.forEach((stat, index) => {
-      options.push(<option key={`${type}-${stat}`} value={`${index}:${type}`}>{`${type} +${stat}`}</option>);
+      if ((slot > preMeldSlots && overmeldTiers[index]) || slot <= preMeldSlots) {
+        options.push(<option key={`${type}-${stat}`} value={`${index}:${type}`}>{`${type} +${stat}`}</option>);
+      }
     });
+
     optionGroups.push(<OptionGroup key={`group-${type}`} name={materias[type].name} options={options} />);
   });
 
@@ -89,6 +91,18 @@ const MateriaSelector = ({ slot }) => {
   );
 };
 
+const MateriaSelectorGroup = ({ meldSlots }) => {
+  const elements = [];
+  for (let index = 0; index < meldSlots; index += 1) {
+    elements.push(<MateriaSelector key={`ms-${index}`} slot={index} />);
+  }
+  return (
+    <div className="materiaSelector-group">
+      {elements}
+    </div>
+  );
+};
+
 const App = () => {
   const handleOnClick = (e) => {
     console.log(`Clicked! ${e.target.value}`);
@@ -96,20 +110,12 @@ const App = () => {
 
   return (
     <div>
-      <div className="materiaSelector-group">
-        <MateriaSelector slot={0} />
-        <MateriaSelector slot={1} />
-        <MateriaSelector slot={2} />
-        <MateriaSelector slot={3} />
-        <MateriaSelector slot={4} />
-      </div>
-      <div className="materiaSelector-group">
-        <MateriaSelector slot={0} />
-        <MateriaSelector slot={1} />
-        <MateriaSelector slot={2} />
-        <MateriaSelector slot={3} />
-        <MateriaSelector slot={4} />
-      </div>
+      <MateriaSelectorGroup meldSlots={5} />
+      <MateriaSelectorGroup meldSlots={1} />
+      <MateriaSelectorGroup meldSlots={2} />
+      <MateriaSelectorGroup meldSlots={3} />
+
+
       <button type="button" className="meld-slot" onClick={handleOnClick} />
       <button type="button" className="meld-slot" onClick={handleOnClick} />
       <button type="button" className="meld-slot" onClick={handleOnClick} />
