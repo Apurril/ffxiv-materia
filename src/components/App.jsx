@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/control-has-associated-label */
@@ -22,33 +23,34 @@ const materias = {
 
 const overmeldTiers = [true, true, true, true, true, false, true, false];
 
-const App = () => {
-  const handleOnClick = () => {
-    // stuff
-    console.log("Clicked!");
-  };
-  console.log(materias);
-  console.log(Object.keys(materias));
+const OptionGroup = ({ name, options }) => (
+  <optgroup label={`${name}`}>{options}</optgroup>
+);
 
-  const AnotherDropdown = () => {
-    const options = [];
+const App = () => {
+  const handleOnClick = (e) => {
+    // stuff
+    console.log(`Clicked! ${e.target.value}`);
+  };
+
+  const MateriaSelector = () => {
+    const optionGroups = [];
 
     Object.keys(materias).forEach((type) => {
-      materias[type].values.map((stat) => {
-        options.push(<option key={`${type}${stat}`} value={`${type} ${stat}`}>{`${type} +${stat}`}</option>);
-        return options;
+      const options = [];
+
+      materias[type].values.forEach((stat) => {
+        options.push(<option onClick={(e) => handleOnClick(e)} key={`${type}-${stat}`} value={`${type} ${stat}`}>{`${type} +${stat}`}</option>);
       });
+      optionGroups.push(<OptionGroup key={`group-${type}`} name={type} options={options} />);
     });
 
-    return (
-      <select name="materia" id="materia-select">
-        {options}
-      </select>
-    );
+    return (<select name="materia" id="materia-select">{optionGroups}</select>);
   };
+
   return (
     <div>
-      <AnotherDropdown />
+      <MateriaSelector />
       <button type="button" className="meld-slot" onClick={handleOnClick} />
       <button type="button" className="meld-slot" onClick={handleOnClick} />
       <button type="button" className="meld-slot" onClick={handleOnClick} />
