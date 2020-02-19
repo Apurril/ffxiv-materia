@@ -114,11 +114,10 @@ const App = () => {
       <MateriaSelectorGroup meldSlots={1} />
       <MateriaSelectorGroup meldSlots={2} />
       <MateriaSelectorGroup meldSlots={3} />
-
-
+      {/*
       <button type="button" className="meld-slot" onClick={handleOnClick} />
       <button type="button" className="meld-slot" onClick={handleOnClick} />
-      <button type="button" className="meld-slot" onClick={handleOnClick} />
+      <button type="button" className="meld-slot" onClick={handleOnClick} /> */}
     </div>
   );
 };
