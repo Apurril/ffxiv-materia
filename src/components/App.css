@@ -1,26 +1,37 @@
-.meld-slot {
-  background-color: snow;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: dashed grey;
-  margin: 10px;
-  cursor: pointer;
-}
-
 .materiaSelector {
   padding: 1px;
   margin: 2px;
+  color: rgb(184, 184, 184);
+  background-color: rgb(69, 69, 69);
+  border: none;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 0px 3px 0 rgb(0, 0, 0, 0.85);
+
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: rgb(69, 69, 69); */
 }
+
 .materiaSelector-group {
   display: inline-flex;
   flex-direction: column;
 
   border-radius: 5px 5px 5px 5px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(49, 49, 49);
 
-  box-shadow: 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 4px 0 rgb(0, 0, 0, 0.85);
 
   margin: 5px;
   padding: 5px;
+}
+
+.materiaSelector:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
 }

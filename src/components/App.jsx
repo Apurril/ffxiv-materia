@@ -82,7 +82,7 @@ const MateriaSelector = ({ slot }) => {
   });
 
   return (
-    <div>
+    <div className="Herp">
       <label htmlFor="materia-select">
         <select className="materiaSelector" name="materia" id={`materia-select-${slot}`} onChange={handleChange} value={selectedMateria}>{optionGroups}</select>
         {materiaLabel}
@@ -114,10 +114,6 @@ const App = () => {
       <MateriaSelectorGroup meldSlots={1} />
       <MateriaSelectorGroup meldSlots={2} />
       <MateriaSelectorGroup meldSlots={3} />
-      {/*
-      <button type="button" className="meld-slot" onClick={handleOnClick} />
-      <button type="button" className="meld-slot" onClick={handleOnClick} />
-      <button type="button" className="meld-slot" onClick={handleOnClick} /> */}
     </div>
   );
 };

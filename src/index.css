@@ -2,10 +2,11 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(236, 163, 212);
-  color: rgba(66, 66, 66, 0.8);
+  background-color: rgb(29, 29, 29);
+  color: rgb(184, 184, 184);
 }
 * {
   margin: 0;
   padding: 0;
+  scrollbar-color: yellow blue;
 }
